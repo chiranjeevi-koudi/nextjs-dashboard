@@ -10,7 +10,7 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
-
+export const dynamic = 'force-dynamic'
 export async function fetchRevenue() {
   noStore();
   // Add noStore() here prevent the response from being cached.
@@ -21,7 +21,7 @@ export async function fetchRevenue() {
     // Don't do this in real life :)
 
     console.log('Fetching revenue data...');
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
